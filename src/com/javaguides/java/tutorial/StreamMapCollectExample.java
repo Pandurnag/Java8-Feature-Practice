@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Function;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class StreamMapCollectExample {
 
@@ -28,10 +30,14 @@ public class StreamMapCollectExample {
 		
 		// using stream().map()
 		
-		
-			
-		}
-	}
+	List<UserDTO> userDTOs =	   users.stream().map((User user ) -> new UserDTO(user.getId(), user.getUserName(), user.getmail()))
+		        .collect(Collectors.toList());
+	
+	userDTOs.forEach(System.out::println);
+					
+				}
+			}
+	
 
 
 class UserDTO{
